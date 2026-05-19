@@ -17,7 +17,7 @@ export const stripeWebhooks = async (request, response) => {
         switch(event.type){
             case "payment_intent.succeeded":{
                 const paymentIntent = event.data.object;
-                const sessinList = await stripe.checkout.sessions.list({
+                const sessionList = await stripe.checkout.sessions.list({
                     payment_intent: paymentIntent.id,
                 })
 
@@ -26,7 +26,7 @@ export const stripeWebhooks = async (request, response) => {
 
                 if(appId === 'nabiai'){
                     const transaction = await Transaction.findOne({
-                        _id: transactionId, ispaid: false
+                        _id: transactionId, isPaid: false
                     })
                     await User.updateOne({_id: transaction.userId}, {$inc: 
                         {credits: transaction.credits}

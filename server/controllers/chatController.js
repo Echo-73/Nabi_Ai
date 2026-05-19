@@ -10,10 +10,10 @@ export const createChat = async (req ,res) =>{
             userId,
             messages: [],
             name: "New Chat",
-            userName: req.user.userName
+            userName: req.user.name
         }
-        await Chat.create(chatData)
-        res.json({success: true, message: "Chat created"})
+        const newChat = await Chat.create(chatData)
+        res.json({success: true, chat: newChat})
     }catch (error){
         res.json({success: false, message: error.message});
     }

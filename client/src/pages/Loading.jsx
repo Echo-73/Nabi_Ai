@@ -17,7 +17,7 @@ const Loading = () => {
     backdrop-opacity-60 flex items-center justify-center h-screen w-screen
     text-white text-2xl'>
       <div className='w-10 h-10 rounded-full border-3 border-white
-      border-t-transparent animated-spin'></div>
+      border-t-transparent animate-spin'></div>
     </div>
   )
 }

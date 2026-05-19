@@ -56,12 +56,12 @@ export const purchasePlan = async(req, res) => {
         })
 
         
-        const {origin} = req.headers;
+        const origin =req.headers.origin || 'http://localhost:5173';
 
         const session = await stripe.checkout.sessions.create({
             line_items: [
                 {
-                price: {
+                price_data: {
                     currency: "usd",
                     unit_amount: plan.price * 100,
                     product_data: {
